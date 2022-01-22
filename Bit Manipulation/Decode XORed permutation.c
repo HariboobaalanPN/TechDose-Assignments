@@ -1,18 +1,21 @@
 #include<stdio.h>
 #include<string.h>
-void decode(int n,int a[]){
-    int arr[n+1];
-    memset(arr,0,n+1);
-    for(int i=0;i<=n+1;i++) {
-        arr[0]^=i;
-        if(i<n && i%2==1){
-            arr[0]^=a[i];
-        }
+void decode(int n,int encoded[]){
+    int arr[++n],index=0;
+    int xor1=0,xor2=0;
+    for(int i=1;i<=n;i++) {
+        xor1^=i;
     }
-    for(int i=1;i<n+1;i++){
-        arr[i]^=arr[i-1]^a[i-1];
+    for(int i=1;i<n;i+=2){
+        xor2^=encoded[i];
     }
-    for(int i=0;i<n+1;i++){
+    arr[index++]=xor1^xor2;
+    for(int i=0;i<n-1;i++){
+        arr[index]=encoded[i]^arr[index-1];
+        index++;
+    }
+    
+    for(int i=0;i<n;i++){
         printf("%d ",arr[i]);
     }
 } 
@@ -25,6 +28,7 @@ int main(){
 	 printf("\nEnter elements: ");
 	 for(int i=0;i<n;i++)
 	    scanf("%d ",&arr[i]);
+	 printf("\nEncoded array: ");
 	 decode(n,arr);
 	
 }
