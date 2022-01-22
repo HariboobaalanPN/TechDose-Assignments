@@ -1,12 +1,12 @@
 #include<stdio.h>
 #include<string.h>
 int majorityElement(int n,int arr[]){
-    int f=0,major;
+    int flag=0,major=0,count=0;
     for (int i=0;i<n;i++) {
-        if (f==0){
+        if (flag==0){
             major=arr[i];
         }
-		c=(major == arr[i])?c+1:c-1;
+		count=(major==arr[i])?count+1:count-1;
     }
     return major;
 } 
