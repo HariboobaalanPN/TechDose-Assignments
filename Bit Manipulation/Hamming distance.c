@@ -1,11 +1,13 @@
 #include<stdio.h>
 
 int hammingDistance(int a, int b){
-    int d = 0;
-    for(int i=a^b;i>0;i&=(i-1)){
-        d++;
+    int count=0;
+    while (x>0 || y>0){
+        count+=(x&1)^(y&1);
+        x>>=1;
+        y>>=1;
     }
-    return d;  
+    return count;  
 }   
 
 int main(){
