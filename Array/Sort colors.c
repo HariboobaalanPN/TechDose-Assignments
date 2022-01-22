@@ -1,35 +1,26 @@
 #include<stdio.h>
 #include<string.h>
-void sortColors(int n,int nums[n]) {
-    int max=nums[0];
-    for(int i=0;i<n;i++)
-    {
-        if(nums[i]>max)
-            max=nums[i];
-    }
-    int count[max+1];
-    for(int i=0;i<=max;i++){
-        count[i]=0;
-    }
-    for(int i=0;i<n;i++)
-    {
-        count[nums[i]]++;
-    }
-    int b[n];
-    for(int i=1;i<=max;i++)
-    {
-        count[i]=count[i]+count[i-1];
-    }
-    for(int i=n-1;i>=0;i--)
-    {
-        b[--count[nums[i]]]=nums[i];
-    }
-    for(int i=0;i<n;i++)
-    {
-        nums[i]=b[i];
-    }
-    for(int i=0;i<n;i++){
-        printf("%d ",nums[i]);
+void swap(int *a,int *b){
+    int t=(*a);
+    (*a)=(*b);
+    (*b)=t;
+}
+void sortColors(int* nums, int numsSize){
+    if(numsSize>1){
+        int low=0;
+        int high=numsSize-1;
+        int mid=0;
+        while(mid<=high){
+            switch(nums[mid]){
+                case 0: swap(&nums[low++],&nums[mid++]);
+                    break;
+                case 1: mid++;
+                    break;
+                case 2: swap(&nums[mid],&nums[high--]);
+                    break;
+                default:;
+            }
+        }
     }
 }
 
@@ -42,6 +33,9 @@ int main(){
 	 printf("\nEnter elements: ");
 	 for(int i=0;i<n;i++)
 	    scanf("%d ",&arr[i]);
-    sortColors(n,arr);
-	
+    sortColors(arr,n);
+    printf("\nColors after sort:\n");
+    for(int i=0;i<n;i++){
+        printf("%d ",arr[i]);
+    }
 }
