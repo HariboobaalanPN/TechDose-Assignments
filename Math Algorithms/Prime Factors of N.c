@@ -13,7 +13,7 @@ int main()
     for(int i=3;i<=sqrt(n);i=i+2){  // Only odd numbers must be as factors, so consider 3 as start and increment by 2 
         while(n%i==0){
             n/=i;
-            a[ind++]=n;
+            a[ind++]=i;
         }
     }
     if(n>2){           // If any value remains then it is also a prime factor
