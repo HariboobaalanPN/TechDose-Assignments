@@ -1,17 +1,11 @@
 #include<stdio.h>
 #include<string.h>
 int singleNumber(int n,int arr[]){
-    int one=0,two=0,three;
+    int one=0,two=0;
 	for(int i=0;i<n;i++)
 	{
-		two |= (one & arr[i]);
-		one ^= arr[i];
-		three = (two & one);
-		if(three != 0)
-		{
-			one ^= three;
-			two ^= three;
-		}
+		one=(one^arr[i])&(~two);
+		two=(two^arr[i])&(~one);
 	}
 	return one;
 } 
