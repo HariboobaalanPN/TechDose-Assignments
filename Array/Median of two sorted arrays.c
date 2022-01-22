@@ -1,55 +1,18 @@
-#include<stdio.h>
-#include<string.h>
-int median(int n1,int arr1[n1],int n2,int arr2[n2]) {
-    int l=n1+n2;
-    int res[l],i,j,k;
-    while(i<n1 && j<n2)
-    {
-        if(arr1[i]<arr2[j])
-        {
-            res[k]=arr1[i];
-            i++;
-        }
-        else
-        {
-            res[k]=arr2[j];
-            j++;
-        }
-        k++;
+#include <stdio.h>
+double findMedianSortedArrays(int* nums1, int nums1Size, int* nums2, int nums2Size){
+    int i=0,ind=0,j=0,n=nums1Size+nums2Size;
+    int a[n];
+    while(i<nums1Size && j<nums2Size){
+        a[ind++]=(nums1[i]<=nums2[j])?nums1[i++]:nums2[j++];
     }
-    if(i>=n1)
-    {
-        while(j<n2)
-        {
-            res[k]=arr2[j];
-            j++;
-            k++;
-        }
+    while(i<nums1Size){
+        a[ind++]=nums1[i++];
     }
-    else
-    {
-        while(i<n1)
-        {
-            res[k]=arr1[i];
-            i++;
-            k++;
-        }
+    while(j<nums2Size){
+        a[ind++]=nums2[j++];
     }
-    double sum=0;
-    for(int d=0;d<l;d++)
-        printf("%d ",res[d]);
-    if(l%2==0)
-    {
-        int mid=l/2;
-        sum=(double)(res[mid]+res[mid-1])/2;
-    }
-    else
-    {
-        sum=res[l/2];
-    }
-    return sum;
+    return n&1?a[n/2]:((a[n/2]+a[(n/2)-1])/2.0);
 }
-
 
 int main(){
 	 int n1,n2;
@@ -66,7 +29,6 @@ int main(){
 	 printf("\nEnter elements: ");
 	 for(int i=0;i<n2;i++)
 	    scanf("%d ",&arr2[i]);
-	 
-	 printf("\n%d",median(n1,arr1,n2,arr2));
+	 printf("\n%lf",findMedianSortedArrays(arr1,n1,arr2,n2));
 	
 }
