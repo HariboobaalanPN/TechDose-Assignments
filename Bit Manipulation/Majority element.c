@@ -2,7 +2,7 @@
 #include<string.h>
 
 int majorityElement(int n,int arr[]){
-    int major=arr[0],count=0;
+    int major=arr[0],count=1;
     for (int i=1;i<n;i++){
     	count=(major==arr[i])?count+1:count-1;
     	if(count==0){
