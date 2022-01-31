@@ -37,3 +37,47 @@ int main()
     
     return 0;
 }
+//  QUICK SORT - RANDOMIZING PIVOT ELEMENT
+/*
+#include<stdio.h> 
+int partition(int arr[],int left, int right) { 
+    int pivotValue = arr[left + (right - left) / 2]; 
+    while(1) { 
+        while(arr[left]<pivotValue) { 
+            left++;
+        } 
+        while(arr[right]>pivotValue) { 
+            right--; 
+        } 
+        if(left>=right) { 
+            return right; 
+        } 
+        int temp = arr[left]; 
+        arr[left] = arr[right]; 
+        arr[right] = temp; 
+        left++; 
+        right--; 
+    } 
+}
+void sort(int arr[],int from, int to) { 
+    if(from < to) { 
+        int pivot = partition(arr,from,to); 
+        sort(arr,from,pivot-1); 
+        sort(arr,pivot+1,to); 
+    } 
+} 
+int main() { 
+    int listsize; 
+    scanf("%d",&listsize); 
+    int values[listsize]; 
+    int index; 
+    for(index=0; index<listsize; index++) { 
+        scanf("%d",&values[index]); 
+    } 
+    sort(values,0,listsize-1); 
+    for(index=0; index<listsize; index++) { 
+        printf("%d ",values[index]); 
+    }
+} 
+
+*/
