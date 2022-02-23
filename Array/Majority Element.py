@@ -12,3 +12,24 @@ if result != -1:
     print('The majority element is', result)
 else:
     print('The majority element does not exist')
+'''
+        int n = nums.size();
+        int majority = nums[0];
+        int count = 1;
+        
+        for(int i=1;i<n;++i)
+        {
+            if(nums[i]==majority)
+                count += 1;
+            else
+            {
+                count -= 1;
+                if(count==0)
+                {
+                    majority = nums[i];
+                    count = 1;
+                }
+            }
+        }
+        return majority;
+'''
